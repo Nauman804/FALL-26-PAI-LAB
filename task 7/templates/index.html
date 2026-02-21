@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; text-align: center; }
+        .container { margin: 50px auto; padding: 20px; background: white; width: 400px; border-radius: 10px; }
+        h1 { color: #333; }
+        input, select, button { padding: 10px; margin: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌦 Weather App</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city (e.g. Karachi,PK)" required>
+            <select name="units">
+                <option value="metric">Celsius (°C)</option>
+                <option value="imperial">Fahrenheit (°F)</option>
+                <option value="standard">Kelvin (K)</option>
+            </select>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        {% if weather %}
+            <h2>Weather in {{ weather.city }}</h2>
+            <p><b>Temperature:</b> {{ weather.temperature }} {{ "°C" if weather.units=="metric" else ("°F" if weather.units=="imperial" else "K") }}</p>
+            <p><b>Feels like:</b> {{ weather.feels_like }}</p>
+            <p><b>Condition:</b> {{ weather.condition }}</p>
+            <p><b>Humidity:</b> {{ weather.humidity }}%</p>
+            <p><b>Pressure:</b> {{ weather.pressure }} hPa</p>
+            <p><b>Wind Speed:</b> {{ weather.wind_speed }} m/s</p>
+            <p><b>Sunrise:</b> {{ weather.sunrise }}</p>
+            <p><b>Sunset:</b> {{ weather.sunset }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
