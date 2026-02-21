@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Home — ObjectCounter{% endblock %}
+
+{% block content %}
+  <div class="hero">
+    <div class="content">
+      <h1 class="display-6">AI-powered Object Counting</h1>
+      <p class="lead">Count moving objects in live video or uploaded files. Simple, fast, and ready to extend with detectors.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="label">Real-time</div>
+          <div class="value">Live Camera</div>
+        </div>
+        <div class="stat">
+          <div class="label">Processed</div>
+          <div class="value">Videos</div>
+        </div>
+        <div class="stat">
+          <div class="label">Accuracy</div>
+          <div class="value">Tunable</div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a href="/live" class="btn btn-primary me-2">Start Live</a>
+        <a href="#upload" class="btn btn-outline-primary">Upload Video</a>
+      </div>
+    </div>
+
+    <div class="preview">
+      <div class="video-frame shadow rounded">
+        <img src="/static/ui_preview.svg" alt="preview" style="max-height:320px;">
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <div id="upload" class="card p-4">
+    <h5 class="card-title">Process a Video</h5>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+      <div class="mb-3">
+        <input class="form-control" type="file" name="video" accept="video/*" required>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-success" type="submit">Upload & Process</button>
+        <button class="btn btn-secondary" type="button" id="clearBtn">Clear</button>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
