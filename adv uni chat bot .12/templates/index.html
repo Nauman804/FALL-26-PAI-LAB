@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GOKBORU - Advanced AI Assistant with Cyber-Wolf Spatial UI">
+    <meta name="theme-color" content="#3b82f6">
+    <title>GOKBORU | Advanced AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- 3D FLOATING BACKGROUND TEXT -->
+    <div class="bg-text">GOKBORU</div>
+
+    <!-- MAIN CHAT CONTAINER WITH 3D TILT -->
+    <div class="chat-container" id="container">
+        
+        <!-- HEADER -->
+        <div class="chat-header">
+            <h2>
+                <span class="status-dot">● Online</span>
+                GOKBORU AI
+            </h2>
+            <p>Semantic Intelligence System</p>
+        </div>
+
+        <!-- CHAT MESSAGES AREA -->
+        <div id="chatbox" role="log" aria-label="Chat messages"></div>
+
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <form class="input-box" id="messageForm">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Ask about admissions..." 
+                    required 
+                    autocomplete="off"
+                    aria-label="Message input"
+                >
+                <button id="sendBtn" type="submit" aria-label="Send message">SEND</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const chatbox = document.getElementById("chatbox");
+        const userInput = document.getElementById("userInput");
+        const messageForm = document.getElementById("messageForm");
+        const container = document.getElementById("container");
+        const sendBtn = document.getElementById("sendBtn");
+
+        // ============================================
+        // 3D MOUSE TRACKING - SPATIAL TILT EFFECT
+        // ============================================
+        document.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const rotateX = (e.clientY - centerY) / 30;
+            const rotateY = (e.clientX - centerX) / -30;
+            
+            container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        // Reset tilt when mouse leaves
+        document.addEventListener('mouseleave', () => {
+            container.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+
+        // ============================================
+        // MESSAGE CREATION FUNCTIONS
+        // ============================================
+        function addMessage(text, type) {
+            const wrapper = document.createElement("div");
+            wrapper.className = `message-wrapper ${type}`;
+            
+            const msg = document.createElement("div");
+            msg.className = `${type}-msg`;
+            msg.textContent = text;
+            
+            wrapper.appendChild(msg);
+            chatbox.appendChild(wrapper);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const wrapper = document.createElement("div");
+            wrapper.className = "message-wrapper bot";
+            wrapper.id = "typing-indicator";
+            
+            const indicator = document.createElement("div");
+            indicator.className = "typing-indicator";
+            
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement("div");
+                dot.className = "typing-dot";
+                indicator.appendChild(dot);
+            }
+            
+            wrapper.appendChild(indicator);
+            chatbox.appendChild(wrapper);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById("typing-indicator");
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // ============================================
+        // MESSAGE HANDLING
+        // ============================================
+        messageForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // Add user message (no label)
+            addMessage(text, 'user');
+            userInput.value = "";
+            userInput.focus();
+
+            // Disable send button
+            sendBtn.disabled = true;
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Send to backend
+            fetch("/get", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "msg=" + encodeURIComponent(text)
+            })
+            .then(res => res.text())
+            .then(data => {
+                removeTypingIndicator();
+                addMessage(data, 'bot');
+                sendBtn.disabled = false;
+            })
+            .catch(err => {
+                console.error("Error:", err);
+                removeTypingIndicator();
+                addMessage("Sorry, connection error. Please try again.", 'bot');
+                sendBtn.disabled = false;
+            });
+        });
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        window.addEventListener("load", () => {
+            userInput.focus();
+            // Welcome message on load
+            addMessage("👋 Welcome to GOKBORU. How can I help you today?", 'bot');
+        });
+
+        // ============================================
+        // KEYBOARD SHORTCUTS
+        // ============================================
+        // Already handled by form submission on Enter
+    </script>
+
+</body>
+</html>

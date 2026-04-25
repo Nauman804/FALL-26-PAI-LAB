@@ -1,0 +1,165 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "salam", "good morning", "good evening"],
+      "responses": ["Hello 👋 I am your University Admission Assistant. Ask me about courses, fees, admissions or timings."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "exit"],
+      "responses": ["Goodbye 👋 Best of luck with your studies!"]
+    },
+
+    {
+      "tag": "courses_general",
+      "patterns": ["course", "courses", "what courses are offered", "programs", "degrees list", "departments", "offerings"],
+      "responses": ["We offer BSCS, BBA, Electrical Engineering, Software Engineering, and Artificial Intelligence."]
+    },
+
+    {
+      "tag": "bs_cs",
+      "patterns": ["cs", "bscs", "bscs details", "computer science", "cs course", "bs computer science"],
+      "responses": ["BSCS: 4 years | Fee: 55k–80k | Classes: 9AM–2PM | Focus: Programming, AI, Databases"]
+    },
+
+    {
+      "tag": "bba",
+      "patterns": ["bba", "bba details", "business administration", "bba course"],
+      "responses": ["BBA: 4 years | Fee: 50k–70k | Classes: 8:30AM–1:30PM | Focus: Marketing, Finance, HRM"]
+    },
+
+    {
+      "tag": "ai",
+      "patterns": ["ai", "ai course", "artificial intelligence", "machine learning program"],
+      "responses": ["AI: 4 years | Fee: 70k–120k | Classes: 10AM–3PM | Focus: ML, DL, Data Science"]
+    },
+
+    {
+      "tag": "software_engineering",
+      "patterns": ["se", "software", "software engineering", "se course", "software dev program"],
+      "responses": ["Software Engineering: 4 years | Fee: 60k–100k | Focus: Development, Testing, DevOps"]
+    },
+
+    {
+      "tag": "fee_general",
+      "patterns": ["fee", "fees", "cost", "how much fee"],
+      "responses": ["Fees vary by program: BSCS 55–80k, BBA 50–70k, AI 70–120k, SE 60–100k per semester."]
+    },
+
+    {
+      "tag": "admission_process",
+      "patterns": ["admission", "admissions", "how to apply", "admission process", "apply university", "entry process"],
+      "responses": ["Apply online from June to August. Submit documents and appear in entry test."]
+    },
+
+    {
+      "tag": "deadline",
+      "patterns": ["last date", "deadline", "admission closing date"],
+      "responses": ["Admission deadline is 31st August every year."]
+    },
+
+    {
+      "tag": "entry_test",
+      "patterns": ["test", "entry test", "test details", "admission test"],
+      "responses": ["Entry test includes English, Math, and IQ-based MCQs."]
+    },
+
+    {
+      "tag": "requirements",
+      "patterns": ["requirements", "eligibility", "documents needed", "documents"],
+      "responses": ["You need FA/FSc or equivalent with minimum 50% marks + CNIC/Form-B + photos."]
+    },
+
+    {
+      "tag": "scholarship",
+      "patterns": ["scholarship", "financial aid", "fee discount", "discount"],
+      "responses": ["We offer merit-based and need-based scholarships."]
+    },
+
+    {
+      "tag": "hostel",
+      "patterns": ["hostel", "accommodation", "living facility", "room"],
+      "responses": ["Yes, separate hostels for boys and girls with WiFi and mess facility."]
+    },
+
+    {
+      "tag": "timings",
+      "patterns": ["time", "timing", "class timing", "schedule", "university timing", "class", "classes", "class time"],
+      "responses": ["Morning: 8:30AM–2:30PM | Evening: 3PM–7PM depending on department."]
+    },
+
+
+    {
+      "tag": "location",
+      "patterns": ["location", "address", "where is university", "campus address"],
+      "responses": ["The university is located in the main city campus with easy transport access."]
+    },
+
+    {
+      "tag": "contact",
+      "patterns": ["contact", "phone number", "email", "number"],
+      "responses": ["Contact admission office via phone or email listed on official website."]
+    },
+
+    {
+      "tag": "library",
+      "patterns": ["library", "books", "study material"],
+      "responses": ["Library is open 8AM–8PM with digital + physical books."]
+    },
+
+    {
+      "tag": "transport",
+      "patterns": ["transport", "bus service", "pickup", "bus"],
+      "responses": ["University provides transport service for main city routes."]
+    },
+
+    {
+      "tag": "exams",
+      "patterns": ["exam", "exams", "exam schedule", "midterm", "final exam"],
+      "responses": ["Midterms and finals are held every semester according to academic calendar."]
+    },
+
+    {
+      "tag": "results",
+      "patterns": ["result", "exam result", "grades"],
+      "responses": ["Results are announced online through student portal."]
+    },
+
+    {
+      "tag": "campus_facilities",
+      "patterns": ["facilities", "campus facilities", "labs", "sports", "ground"],
+      "responses": ["We offer computer labs, science labs, sports ground, cafeteria, and WiFi campus."]
+    },
+
+    {
+      "tag": "cafeteria",
+      "patterns": ["cafeteria", "food", "canteen", "cafe"],
+      "responses": ["Cafeteria offers affordable meals and snacks for students."]
+    },
+
+    {
+      "tag": "attendance",
+      "patterns": ["attendance", "attendance policy", "attendance rules"],
+      "responses": ["Minimum 75% attendance is required for exams eligibility."]
+    },
+
+    {
+      "tag": "discipline",
+      "patterns": ["rules", "discipline", "code of conduct"],
+      "responses": ["Students must follow university discipline rules and maintain proper conduct."]
+    },
+
+    {
+      "tag": "internship",
+      "patterns": ["internship", "job placement", "career", "job"],
+      "responses": ["We provide internship opportunities in final year with partner companies."]
+    },
+
+    {
+      "tag": "final_year_project",
+      "patterns": ["fyp", "project", "final year project", "project guidance"],
+      "responses": ["Final year students are assigned supervisors for project guidance."]
+    }
+  ]
+}
