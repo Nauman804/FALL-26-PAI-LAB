@@ -32,13 +32,21 @@ source venv/bin/activate
 pip install -r requirements.txt
 5. Add API Key
 
+
+
 Create a .env file and add:
 
 GROQ_API_KEY=your_api_key_here
+
+
 6. Run the App
 python app.py
-7. Open in Browser
+
+
+8. Open in Browser
 http://localhost:5000
+
+
 📁 Project Structure
 ai_study_assistant/
 │
