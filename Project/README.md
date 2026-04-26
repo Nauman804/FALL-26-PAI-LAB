@@ -62,6 +62,12 @@ ai_study_assistant/
     │   └── style.css
     └── js/
         └── main.js
+
+
+
+
+
+        
 🔌 API Endpoints
 Endpoint	Method	Description
 /	GET	Main page
@@ -70,15 +76,28 @@ Endpoint	Method	Description
 /summarize-file	POST	Summarize files
 /quiz	POST	Generate quiz
 /explain	POST	Explain concepts
+
+
+
+
+
 🎯 Use Cases
+
+
 Students preparing for exams
 Quick revision and summaries
 Self-assessment using quizzes
 Understanding difficult topics
+
+
+
 ⚠️ Notes
-Do not share your .env file publicly
 Make sure your API key is valid
 Requires Python 3.10+
+
+
+
+
 ❤️ Contribution
 
 Feel free to fork this repository and improve the project. Contributions are welcome!
